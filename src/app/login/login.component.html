@@ -1,1 +1,67 @@
-<p>login works!</p>
+<div class="min-w-screen min-h-screen flex items-center justify-center">
+  <div class="max-w-lg w-full shadow-xl rounded-xl p-5 text-center bg-white">
+    <h1 class="text-2xl font-semibold text-center mb-4">Welcome!</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left">
+      <div class="mb-4">
+        <hlm-form-field>
+          <input
+            id="email"
+            type="email"
+            hlmInput
+            formControlName="email"
+            placeholder="Email"
+            class="w-full"
+          />
+          <hlm-error
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              form.get('email')?.touched
+            "
+          >
+            Email is required
+          </hlm-error>
+          <hlm-error
+            *ngIf="
+              form.get('email')?.hasError('email') && form.get('email')?.touched
+            "
+          >
+            Enter a valid email address
+          </hlm-error>
+        </hlm-form-field>
+      </div>
+
+      <div class="mb-4">
+        <hlm-form-field>
+          <input
+            id="password"
+            type="password"
+            hlmInput
+            formControlName="password"
+            placeholder="Password"
+            class="w-full"
+          />
+          <hlm-error>Password is required</hlm-error>
+        </hlm-form-field>
+      </div>
+
+      <button
+        type="submit"
+        hlmBtn
+        class="w-full bg-blue-950 hover:bg-blue-900 transition-all text-white"
+        [disabled]="form.invalid"
+      >
+        Log in
+      </button>
+
+      <div class="mt-3 text-gray-500 text-center">
+        Don&#39;t have an account?
+        <a
+          routerLink="/register"
+          class="text-gray-800 font-medium hover:cursor-pointer hover:opacity-70 transition-all"
+        >
+          Register now!
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

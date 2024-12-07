@@ -1,0 +1,145 @@
+<div
+  class="min-w-screen min-h-screen flex relative items-center justify-center"
+>
+  <alert-destructive
+    @slideInFromTop
+    *ngIf="showAlert()"
+    class="absolute top-5 animate-in"
+  />
+  <div class="max-w-xl w-full p-7 shadow-xl rounded-lg bg-white">
+    <h1 class="text-2xl font-semibold text-center mb-4">Register</h1>
+    <form [formGroup]="form" class="text-left" (ngSubmit)="onSubmit()">
+      <!-- Username -->
+      <hlm-form-field class="mb-4">
+        <input
+          hlmInput
+          id="username"
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          class="w-full"
+        />
+        <hlm-error
+          *ngIf="
+            form.get('username')?.hasError('required') &&
+            form.get('username')?.touched
+          "
+        >
+          Username is required.
+        </hlm-error>
+        <hlm-error
+          *ngIf="
+            form.get('username')?.hasError('minlength') &&
+            form.get('username')?.touched
+          "
+        >
+          Username must be at least 8 characters long.
+        </hlm-error>
+      </hlm-form-field>
+
+      <!-- Email -->
+      <hlm-form-field class="mb-4">
+        <input
+          hlmInput
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="example@email.com"
+          class="w-full"
+        />
+        <hlm-error
+          *ngIf="
+            form.get('email')?.hasError('required') &&
+            form.get('email')?.touched
+          "
+        >
+          Email is required.
+        </hlm-error>
+        <hlm-error
+          *ngIf="
+            form.get('email')?.hasError('email') && form.get('email')?.touched
+          "
+        >
+          Please input a valid email.
+        </hlm-error>
+      </hlm-form-field>
+
+      <!-- Password -->
+      <hlm-form-field class="mb-4">
+        <input
+          hlmInput
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          class="w-full"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+        />
+        <hlm-error
+          *ngIf="
+            form.get('password')?.hasError('required') &&
+            form.get('password')?.touched
+          "
+        >
+          Password is required.
+        </hlm-error>
+        <hlm-error
+          *ngIf="
+            form.get('password')?.hasError('pattern') &&
+            form.get('password')?.touched
+          "
+        >
+          Password must include at least 1 uppercase letter, 1 lowercase letter,
+          1 number, and 1 special character.
+        </hlm-error>
+      </hlm-form-field>
+
+      <!-- Confirm Password -->
+      <hlm-form-field class="mb-4">
+        <input
+          hlmInput
+          id="confirm"
+          type="password"
+          formControlName="confirm"
+          placeholder="Confirm Password"
+          class="w-full"
+        />
+        <hlm-error
+          *ngIf="
+            form.get('confirm')?.hasError('required') &&
+            form.get('confirm')?.touched
+          "
+        >
+          Please confirm your password.
+        </hlm-error>
+        <hlm-error
+          *ngIf="
+            form.hasError('passwordMismatch') && form.get('confirm')?.touched
+          "
+        >
+          Passwords do not match.
+        </hlm-error>
+      </hlm-form-field>
+
+      <!-- Submit Button -->
+      <button
+        hlmBtn
+        class="w-full mt-4 bg-blue-950 text-white hover:bg-blue-900 transition-all"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Register
+      </button>
+
+      <div class="mt-3 text-gray-500 text-center">
+        Already have an account?
+        <a
+          routerLink="/login"
+          class="text-gray-800 font-medium hover:cursor-pointer hover:opacity-70 transition-all"
+        >
+          Login now!
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
