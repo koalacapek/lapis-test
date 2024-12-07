@@ -1,0 +1,49 @@
+<div className="min-w-screen min-h-screen flex items-center justify-center"></div>
+      <div className="max-w-lg w-full shadow-xl rounded-xl p-5 text-center">
+        <img src={Logo} alt="CareDoct Logo" className="w-40 mx-auto" />
+        <h1 className="text-2xl font-semibold text-center mb-4">
+          Welcome Back!
+        </h1>
+        <Form
+          form={form}
+          name="login"
+          className="text-left"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: "Please input your email!" },
+              { type: "email", message: "Please enter a valid email address!" },
+            ]}
+          >
+            <Input prefix={<UserOutlined />} placeholder="Email" />
+          </Form.Item>
+          <div className="mb-1 text-right text-xs">
+            <Link to="/forgot-password">Forgot password?</Link>
+          </div>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Please input your Password!" }]}
+          >
+            <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+          </Form.Item>
+          <div className="text-center">
+            <Form.Item>
+              <Button type="primary" htmlType="submit" className="w-full">
+                Log in
+              </Button>
+              <div className="mt-3">
+                <span className="text-gray-500 font-light">
+                  Don&#39;t have an account?{" "}
+                  <Link to="/register" className="text-gray-800 font-medium">
+                    Register now!
+                  </Link>
+                </span>
+              </div>
+            </Form.Item>
+          </div>
+        </Form>
+      </div>
+    </div>
