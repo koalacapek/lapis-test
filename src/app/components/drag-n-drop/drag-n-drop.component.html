@@ -1,23 +1,16 @@
-<div class="flex h-full flex-wrap gap-12 py-6">
+<div cdkDropListGroup class="flex h-full flex-wrap gap-12 py-6">
   <!-- To Do Column -->
   <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
     <h2 class="text-xl font-bold mb-6">To Do</h2>
-
     <div
       cdkDropList
-      #todoList="cdkDropList"
+      #todoList
       [cdkDropListData]="todo"
-      [cdkDropListConnectedTo]="[inProgressList, doneList]"
       class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
-      (cdkDropListDropped)="drop($event)"
+      (cdkDropListDropped)="drop($event, 'todo')"
     >
-      @for (item of todo; track $index) {
-      <div
-        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
-        cdkDrag
-      >
-        {{ item }}
-      </div>
+      @for (task of todo; track $index) {
+      <app-task-card cdkDrag [task]="task"></app-task-card>
       }
     </div>
   </div>
@@ -25,45 +18,31 @@
   <!-- In Progress Column -->
   <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
     <h2 class="text-xl font-bold mb-6">In Progress</h2>
-
     <div
       cdkDropList
-      #inProgressList="cdkDropList"
+      #inProgressList
       [cdkDropListData]="inProgress"
-      [cdkDropListConnectedTo]="[todoList, doneList]"
       class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
-      (cdkDropListDropped)="drop($event)"
+      (cdkDropListDropped)="drop($event, 'in_progress')"
     >
-      @for (item of inProgress; track $index) {
-      <div
-        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
-        cdkDrag
-      >
-        {{ item }}
-      </div>
+      @for (task of inProgress; track $index) {
+      <app-task-card cdkDrag [task]="task"></app-task-card>
       }
     </div>
   </div>
 
-  <!-- Done Column -->
+  <!-- Completed Column -->
   <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
     <h2 class="text-xl font-bold mb-6">Completed</h2>
-
     <div
       cdkDropList
-      #doneList="cdkDropList"
-      [cdkDropListData]="done"
-      [cdkDropListConnectedTo]="[todoList, inProgressList]"
+      #completedList
+      [cdkDropListData]="completed"
       class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
-      (cdkDropListDropped)="drop($event)"
+      (cdkDropListDropped)="drop($event, 'completed')"
     >
-      @for (item of done; track $index) {
-      <div
-        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
-        cdkDrag
-      >
-        {{ item }}
-      </div>
+      @for (task of completed; track $index) {
+      <app-task-card cdkDrag [task]="task"></app-task-card>
       }
     </div>
   </div>

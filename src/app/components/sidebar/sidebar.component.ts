@@ -9,7 +9,10 @@ import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { provideIcons } from '@ng-icons/core';
 import { CognitoService } from '../../cognito.service';
 import { Router } from '@angular/router';
-import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
+import {
+  HlmTooltipComponent,
+  HlmTooltipTriggerDirective,
+} from '@spartan-ng/ui-tooltip-helm';
 import {
   BrnDialogContentDirective,
   BrnDialogTriggerDirective,

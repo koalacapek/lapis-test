@@ -5,6 +5,7 @@
     @for (item of options; track $index) {
     <button
       [hlmTooltipTrigger]="item.tooltip"
+      aria-describedby="Simple tooltip"
       variant="outline"
       class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
     >
@@ -15,6 +16,7 @@
     <hlm-dialog>
       <button
         hlmTooltipTrigger="Add task"
+        aria-describedby="Simple tooltip"
         brnDialogTrigger
         variant="outline"
         class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
@@ -97,6 +99,7 @@
   </div>
   <button
     class="hover:cursor-pointer hover:bg-opacity-30 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+    aria-describedby="Simple tooltip"
     (click)="handleLogout()"
     variant="outline"
     [hlmTooltipTrigger]="logout.tooltip"

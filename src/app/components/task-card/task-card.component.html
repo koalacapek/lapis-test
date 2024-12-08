@@ -1,0 +1,44 @@
+<hlm-sheet side="right">
+  <button
+    class="w-full flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
+    cdkDrag
+    brnSheetTrigger
+  >
+    <p>{{ task }}</p>
+    <div
+      class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-2 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+      hlmTooltipTrigger="Edit Task"
+    >
+      <hlm-icon name="lucidePen" size="base"></hlm-icon>
+    </div>
+  </button>
+
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <hlm-sheet-header>
+      <h3 hlmSheetTitle>Edit Task</h3>
+      <p hlmSheetDescription>
+        Make changes to your task here. Click save when you're done.
+      </p>
+    </hlm-sheet-header>
+
+    <div class="py-4 grid gap-4">
+      <div class="items-center grid grid-cols-4 gap-4">
+        <label hlmLabel for="name" class="text-right">Name</label>
+        <input hlmInput id="name" [value]="taskName" class="col-span-3" />
+      </div>
+      <div class="items-center grid grid-cols-4 gap-4">
+        <label hlmLabel for="username" class="text-right">Description</label>
+        <input
+          hlmInput
+          id="description"
+          [value]="taskDescription"
+          class="col-span-3"
+        />
+      </div>
+    </div>
+
+    <hlm-sheet-footer>
+      <button hlmBtn type="submit" (click)="saveTask()">Save Changes</button>
+    </hlm-sheet-footer>
+  </hlm-sheet-content>
+</hlm-sheet>
