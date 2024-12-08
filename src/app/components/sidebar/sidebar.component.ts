@@ -33,6 +33,7 @@ import {
   HlmFormFieldComponent,
   HlmFormFieldModule,
 } from '@spartan-ng/ui-formfield-helm';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -57,6 +58,8 @@ import {
 
     ReactiveFormsModule,
     HlmFormFieldModule,
+
+    CommonModule,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
@@ -84,11 +87,13 @@ export class SidebarComponent {
       route: '/dashboard',
       icon: 'lucideHouse',
       tooltip: 'Dashboard',
+      disabled: false,
     },
     {
       route: '/tasks',
       icon: 'lucideBookCheck',
-      tooltip: 'All Tasks',
+      tooltip: 'Coming soon',
+      disabled: true,
     },
   ];
 

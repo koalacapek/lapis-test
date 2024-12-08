@@ -7,7 +7,12 @@
       [hlmTooltipTrigger]="item.tooltip"
       aria-describedby="Simple tooltip"
       variant="outline"
-      class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+      [disabled]="item.disabled"
+      [ngClass]="{
+        'hover:cursor-pointer hover:bg-opacity-20': !item.disabled,
+        'cursor-not-allowed opacity-50': item.disabled
+      }"
+      class="bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
     >
       <hlm-icon [name]="item.icon" />
     </button>
