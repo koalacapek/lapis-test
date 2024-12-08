@@ -1,4 +1,17 @@
-<p>dashboard works!</p>
-<button hlmBtn (click)="handleLogout()">Sign Out</button>
+@if (!loading()) {
+<div class="w-screen min-h-screen">
+  <div class="w-full min-h-screen flex">
+    <app-sidebar />
 
-<p>Welcome, {{ user()?.preferred_username }}</p>
+    <!-- Rest of content -->
+    <div class="w-full h-full p-20">
+      <h1 class="text-3xl pb-20">Welcome, {{ user()?.preferred_username }}!</h1>
+      <app-drag-n-drop />
+    </div>
+  </div>
+</div>
+} @else {
+<div class="min-w-screen min-h-screen flex items-center justify-center">
+  <hlm-spinner size="lg" />
+</div>
+}

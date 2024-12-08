@@ -1,0 +1,70 @@
+<div class="flex h-full flex-wrap gap-12 py-6">
+  <!-- To Do Column -->
+  <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
+    <h2 class="text-xl font-bold mb-6">To Do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[inProgressList, doneList]"
+      class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of todo; track $index) {
+      <div
+        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
+        cdkDrag
+      >
+        {{ item }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- In Progress Column -->
+  <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
+    <h2 class="text-xl font-bold mb-6">In Progress</h2>
+
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgress"
+      [cdkDropListConnectedTo]="[todoList, doneList]"
+      class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of inProgress; track $index) {
+      <div
+        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
+        cdkDrag
+      >
+        {{ item }}
+      </div>
+      }
+    </div>
+  </div>
+
+  <!-- Done Column -->
+  <div class="w-full max-w-md min-h-32 mb-8 inline-block align-top">
+    <h2 class="text-xl font-bold mb-6">Completed</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, inProgressList]"
+      class="border border-gray-400 rounded-lg bg-white overflow-hidden space-y-4 p-4 min-h-32"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (item of done; track $index) {
+      <div
+        class="flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
+        cdkDrag
+      >
+        {{ item }}
+      </div>
+      }
+    </div>
+  </div>
+</div>

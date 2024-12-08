@@ -1,0 +1,106 @@
+<div
+  class="px-5 pt-20 pb-10 h-full shadow-xl w-full bg-white flex flex-col justify-between"
+>
+  <div class="flex flex-col gap-y-5 items-center">
+    @for (item of options; track $index) {
+    <button
+      [hlmTooltipTrigger]="item.tooltip"
+      variant="outline"
+      class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+    >
+      <hlm-icon [name]="item.icon" />
+    </button>
+    }
+
+    <hlm-dialog>
+      <button
+        hlmTooltipTrigger="Add task"
+        brnDialogTrigger
+        variant="outline"
+        class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+      >
+        <hlm-icon name="lucidePlus" />
+      </button>
+
+      <hlm-dialog-content
+        class="sm:max-w-[425px] min-w-[800px]"
+        *brnDialogContent="let ctx"
+      >
+        <hlm-dialog-header>
+          <h3 hlmDialogTitle>Create a new task</h3>
+        </hlm-dialog-header>
+
+        <!-- Wrap the dialog content in a form -->
+        <form
+          [formGroup]="form"
+          (ngSubmit)="onSubmit()"
+          class="py-4 grid gap-4"
+        >
+          <hlm-form-field class="items-center grid grid-cols-4 gap-4">
+            <label hlmLabel for="title" class="text-right">Title</label>
+            <input
+              hlmInput
+              id="title"
+              formControlName="title"
+              class="col-span-3"
+              placeholder="Task title"
+            />
+
+            @if (form.get('title')?.hasError('required') &&
+            form.get('title')?.touched) {
+
+            <hlm-error>Title is required!</hlm-error>
+            }
+          </hlm-form-field>
+          <hlm-form-field class="grid grid-cols-4 gap-4">
+            <label hlmLabel for="description" class="text-right"
+              >Description</label
+            >
+            <textarea
+              hlmInput
+              id="description"
+              formControlName="description"
+              class="col-span-3 min-h-20"
+              placeholder="Type description here."
+              maxlength="100"
+            ></textarea>
+          </hlm-form-field>
+
+          <hlm-form-field class="grid grid-cols-4 gap-4">
+            <label hlmLabel for="status" class="text-right">Status</label>
+            <brn-select class="inline-block" formControlName="status">
+              <hlm-select-trigger class="w-56">
+                <hlm-select-value></hlm-select-value>
+              </hlm-select-trigger>
+              <hlm-select-content>
+                <hlm-option value="todo">To Do</hlm-option>
+                <hlm-option value="inProgress">In Progress</hlm-option>
+                <hlm-option value="completed">Completed</hlm-option>
+              </hlm-select-content>
+            </brn-select>
+
+            @if (form.get('status')?.hasError('required') &&
+            form.get('status')?.touched) {
+            <hlm-error>Status is required!</hlm-error>
+            }
+          </hlm-form-field>
+
+          <!-- Submit Button -->
+          <hlm-dialog-footer>
+            <button hlmBtn type="submit" [disabled]="form.invalid">
+              Add Task
+            </button>
+          </hlm-dialog-footer>
+        </form>
+      </hlm-dialog-content>
+    </hlm-dialog>
+  </div>
+  <button
+    class="hover:cursor-pointer hover:bg-opacity-30 bg-opacity-0 p-3 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
+    (click)="handleLogout()"
+    variant="outline"
+    [hlmTooltipTrigger]="logout.tooltip"
+  >
+    <hlm-icon [name]="logout.icon"></hlm-icon>
+  </button>
+</div>

@@ -30,6 +30,21 @@
       ],
       "@spartan-ng/ui-icon-helm": [
         ".\\libs/ui/ui-icon-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-spinner-helm": [
+        ".\\libs/ui/ui-spinner-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-tooltip-helm": [
+        ".\\libs/ui/ui-tooltip-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-dialog-helm": [
+        ".\\libs/ui/ui-dialog-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-calendar-helm": [
+        ".\\libs/ui/ui-calendar-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-select-helm": [
+        ".\\libs/ui/ui-select-helm/src/index.ts"
       ]
     }
   },

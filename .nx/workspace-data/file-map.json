@@ -1,0 +1,307 @@
+{
+  "version": "6.0",
+  "nxVersion": "20.2.1",
+  "pathMappings": {
+    "@spartan-ng/ui-button-helm": [
+      ".\\libs/ui/ui-button-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-input-helm": [
+      ".\\libs/ui/ui-input-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-formfield-helm": [
+      ".\\libs/ui/ui-formfield-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-alert-helm": [
+      ".\\libs/ui/ui-alert-helm/src/index.ts"
+    ],
+    "@spartan-ng/ui-icon-helm": [
+      ".\\libs/ui/ui-icon-helm/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "8037249353422744134"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "10175894702052279752"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "11934160580685414355"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "17406702432687230417"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "10093397977228577162"
+      },
+      {
+        "file": "README.md",
+        "hash": "5895218119964681196"
+      },
+      {
+        "file": "angular.json",
+        "hash": "11473735096878275079"
+      },
+      {
+        "file": "components.json",
+        "hash": "3089158842223537119"
+      },
+      {
+        "file": "libs/ui/ui-alert-helm/src/index.ts",
+        "hash": "3791802788218093072"
+      },
+      {
+        "file": "libs/ui/ui-alert-helm/src/lib/hlm-alert-description.directive.ts",
+        "hash": "4246571502104497566"
+      },
+      {
+        "file": "libs/ui/ui-alert-helm/src/lib/hlm-alert-icon.directive.ts",
+        "hash": "12879871385254423897"
+      },
+      {
+        "file": "libs/ui/ui-alert-helm/src/lib/hlm-alert-title.directive.ts",
+        "hash": "937819969753843657"
+      },
+      {
+        "file": "libs/ui/ui-alert-helm/src/lib/hlm-alert.directive.ts",
+        "hash": "457470081086652143"
+      },
+      {
+        "file": "libs/ui/ui-button-helm/src/index.ts",
+        "hash": "17251273102492170138"
+      },
+      {
+        "file": "libs/ui/ui-button-helm/src/lib/hlm-button.directive.ts",
+        "hash": "942478299884707096"
+      },
+      {
+        "file": "libs/ui/ui-button-helm/src/lib/hlm-button.token.ts",
+        "hash": "7896754714560199098"
+      },
+      {
+        "file": "libs/ui/ui-formfield-helm/src/index.ts",
+        "hash": "1379682831294187538"
+      },
+      {
+        "file": "libs/ui/ui-formfield-helm/src/lib/form-field.spec.ts",
+        "hash": "15916373702491913387"
+      },
+      {
+        "file": "libs/ui/ui-formfield-helm/src/lib/hlm-error.directive.ts",
+        "hash": "8559813530759281347"
+      },
+      {
+        "file": "libs/ui/ui-formfield-helm/src/lib/hlm-form-field.component.ts",
+        "hash": "9786975961087671052"
+      },
+      {
+        "file": "libs/ui/ui-formfield-helm/src/lib/hlm-hint.directive.ts",
+        "hash": "6215421755390582281"
+      },
+      {
+        "file": "libs/ui/ui-icon-helm/src/index.ts",
+        "hash": "8493531663304620001"
+      },
+      {
+        "file": "libs/ui/ui-icon-helm/src/lib/hlm-icon.component.spec.ts",
+        "hash": "6693612328840975980"
+      },
+      {
+        "file": "libs/ui/ui-icon-helm/src/lib/hlm-icon.component.ts",
+        "hash": "7882105664021471224"
+      },
+      {
+        "file": "libs/ui/ui-icon-helm/src/lib/hlm-icon.token.ts",
+        "hash": "15872154079361635347"
+      },
+      {
+        "file": "libs/ui/ui-input-helm/src/index.ts",
+        "hash": "487913567356772959"
+      },
+      {
+        "file": "libs/ui/ui-input-helm/src/lib/hlm-input-error.directive.ts",
+        "hash": "17996525915591253064"
+      },
+      {
+        "file": "libs/ui/ui-input-helm/src/lib/hlm-input.directive.ts",
+        "hash": "10693631418696465724"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "8827241527787872961"
+      },
+      {
+        "file": "package.json",
+        "hash": "9688299085064288863"
+      },
+      {
+        "file": "public/favicon.ico",
+        "hash": "3988961587069885523"
+      },
+      {
+        "file": "src/app/app.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/app.component.html",
+        "hash": "13820638279853092459"
+      },
+      {
+        "file": "src/app/app.component.spec.ts",
+        "hash": "17282540940316768989"
+      },
+      {
+        "file": "src/app/app.component.ts",
+        "hash": "648098759002767271"
+      },
+      {
+        "file": "src/app/app.config.ts",
+        "hash": "3979727142702732583"
+      },
+      {
+        "file": "src/app/app.routes.ts",
+        "hash": "16461957423108829705"
+      },
+      {
+        "file": "src/app/auth.guard.spec.ts",
+        "hash": "8826885499913990525"
+      },
+      {
+        "file": "src/app/auth.guard.ts",
+        "hash": "5335447647910227835"
+      },
+      {
+        "file": "src/app/cognito.service.spec.ts",
+        "hash": "4910768255510402191"
+      },
+      {
+        "file": "src/app/cognito.service.ts",
+        "hash": "2441803642113335188"
+      },
+      {
+        "file": "src/app/components/sidebar/sidebar.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/components/sidebar/sidebar.component.html",
+        "hash": "6757849158687532210"
+      },
+      {
+        "file": "src/app/components/sidebar/sidebar.component.spec.ts",
+        "hash": "4273133810497188573"
+      },
+      {
+        "file": "src/app/components/sidebar/sidebar.component.ts",
+        "hash": "18053491801696262989"
+      },
+      {
+        "file": "src/app/confirm-sign-up/confirm-sign-up.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/confirm-sign-up/confirm-sign-up.component.html",
+        "hash": "17918995974469502000"
+      },
+      {
+        "file": "src/app/confirm-sign-up/confirm-sign-up.component.spec.ts",
+        "hash": "7953950915071321925"
+      },
+      {
+        "file": "src/app/confirm-sign-up/confirm-sign-up.component.ts",
+        "hash": "6413965143622432795"
+      },
+      {
+        "file": "src/app/dashboard/dashboard.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/dashboard/dashboard.component.html",
+        "hash": "11014749184460077964"
+      },
+      {
+        "file": "src/app/dashboard/dashboard.component.spec.ts",
+        "hash": "8213465137135699087"
+      },
+      {
+        "file": "src/app/dashboard/dashboard.component.ts",
+        "hash": "3931511995592223626"
+      },
+      {
+        "file": "src/app/environments/environment.ts",
+        "hash": "12034934132690233117"
+      },
+      {
+        "file": "src/app/login/login.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/login/login.component.html",
+        "hash": "17949475007627309587"
+      },
+      {
+        "file": "src/app/login/login.component.spec.ts",
+        "hash": "10730385221617188498"
+      },
+      {
+        "file": "src/app/login/login.component.ts",
+        "hash": "17359100300692331974"
+      },
+      {
+        "file": "src/app/register/register.component.css",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "src/app/register/register.component.html",
+        "hash": "173246516779554374"
+      },
+      {
+        "file": "src/app/register/register.component.spec.ts",
+        "hash": "3383694944551866045"
+      },
+      {
+        "file": "src/app/register/register.component.ts",
+        "hash": "4755694248473758166"
+      },
+      {
+        "file": "src/app/shared/alert.component.ts",
+        "hash": "6133706461519351190"
+      },
+      {
+        "file": "src/index.html",
+        "hash": "12082202433480731919"
+      },
+      {
+        "file": "src/main.ts",
+        "hash": "4169901790405087765"
+      },
+      {
+        "file": "src/styles.css",
+        "hash": "11238631980444114449"
+      },
+      {
+        "file": "tailwind.config.js",
+        "hash": "16571499309840423866"
+      },
+      {
+        "file": "tsconfig.app.json",
+        "hash": "14560978611694835822"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "12595158941706822170"
+      },
+      {
+        "file": "tsconfig.spec.json",
+        "hash": "11023685540591620072"
+      }
+    ]
+  }
+}
