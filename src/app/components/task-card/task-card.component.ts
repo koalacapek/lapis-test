@@ -12,6 +12,12 @@ import { BrnSheetContentDirective } from '@spartan-ng/ui-sheet-brain';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
+import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
+
+import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
+import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
 
 @Component({
   selector: 'app-task-card',
@@ -28,6 +34,13 @@ import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
     HlmIconComponent,
     HlmInputDirective,
     HlmTooltipTriggerDirective,
+    HlmButtonDirective,
+
+    HlmSelectImports,
+    BrnSelectImports,
+
+    HlmFormFieldModule,
+    ReactiveFormsModule,
   ],
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css'],

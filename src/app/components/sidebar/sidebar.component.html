@@ -38,21 +38,30 @@
           (ngSubmit)="onSubmit()"
           class="py-4 grid gap-4"
         >
-          <hlm-form-field class="items-center grid grid-cols-4 gap-4">
-            <label hlmLabel for="title" class="text-right">Title</label>
-            <input
-              hlmInput
-              id="title"
-              formControlName="title"
-              class="col-span-3"
-              placeholder="Task title"
-            />
+          <hlm-form-field class="grid grid-cols-4 gap-4 items-center">
+            <!-- Label -->
+            <label hlmLabel for="title" class="text-right"
+              >Title <span class="text-red-500">*</span>
+            </label>
 
-            @if (form.get('title')?.hasError('required') &&
-            form.get('title')?.touched) {
+            <!-- Input -->
+            <div class="col-span-3">
+              <input
+                hlmInput
+                id="title"
+                formControlName="title"
+                placeholder="Task title"
+                class="w-full"
+              />
 
-            <hlm-error>Title is required!</hlm-error>
-            }
+              <!-- Error Message -->
+              @if (form.get('title')?.hasError('required') &&
+              form.get('title')?.touched) {
+              <hlm-error class="text-sm text-red-500 mt-1"
+                >Title is required!</hlm-error
+              >
+              }
+            </div>
           </hlm-form-field>
           <hlm-form-field class="grid grid-cols-4 gap-4">
             <label hlmLabel for="description" class="text-right"
@@ -68,23 +77,35 @@
             ></textarea>
           </hlm-form-field>
 
-          <hlm-form-field class="grid grid-cols-4 gap-4">
-            <label hlmLabel for="status" class="text-right">Status</label>
-            <brn-select class="inline-block" formControlName="status">
-              <hlm-select-trigger class="w-56">
-                <hlm-select-value></hlm-select-value>
-              </hlm-select-trigger>
-              <hlm-select-content>
-                <hlm-option value="todo">To Do</hlm-option>
-                <hlm-option value="inProgress">In Progress</hlm-option>
-                <hlm-option value="completed">Completed</hlm-option>
-              </hlm-select-content>
-            </brn-select>
+          <hlm-form-field class="grid grid-cols-4 gap-4 items-center">
+            <!-- Label -->
+            <label hlmLabel for="status" class="text-right"
+              >Status
+              <span class="text-red-500">*</span>
+            </label>
 
-            @if (form.get('status')?.hasError('required') &&
-            form.get('status')?.touched) {
-            <hlm-error>Status is required!</hlm-error>
-            }
+            <!-- Select and Error Message -->
+            <div class="col-span-3">
+              <!-- Select Dropdown -->
+              <brn-select class="inline-block w-full" formControlName="status">
+                <hlm-select-trigger class="w-full">
+                  <hlm-select-value></hlm-select-value>
+                </hlm-select-trigger>
+                <hlm-select-content>
+                  <hlm-option value="todo">To Do</hlm-option>
+                  <hlm-option value="inProgress">In Progress</hlm-option>
+                  <hlm-option value="completed">Completed</hlm-option>
+                </hlm-select-content>
+              </brn-select>
+
+              <!-- Error Message -->
+              @if (form.get('status')?.hasError('required') &&
+              form.get('status')?.touched) {
+              <hlm-error class="text-sm text-red-500 mt-1"
+                >Status is required!</hlm-error
+              >
+              }
+            </div>
           </hlm-form-field>
 
           <!-- Submit Button -->
