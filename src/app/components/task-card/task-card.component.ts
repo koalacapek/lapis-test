@@ -11,6 +11,7 @@ import { BrnSheetTriggerDirective } from '@spartan-ng/ui-sheet-brain';
 import { BrnSheetContentDirective } from '@spartan-ng/ui-sheet-brain';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
+import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
 
 @Component({
   selector: 'app-task-card',
@@ -26,6 +27,7 @@ import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 
     HlmIconComponent,
     HlmInputDirective,
+    HlmTooltipTriggerDirective,
   ],
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css'],

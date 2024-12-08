@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -9,24 +9,6 @@ import {
 } from '@angular/cdk/drag-drop';
 import { provideIcons } from '@ng-icons/core';
 import { lucidePen } from '@ng-icons/lucide';
-import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
-import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
-
-import {
-  BrnSheetContentDirective,
-  BrnSheetTriggerDirective,
-} from '@spartan-ng/ui-sheet-brain';
-import {
-  HlmSheetComponent,
-  HlmSheetContentComponent,
-  HlmSheetDescriptionDirective,
-  HlmSheetFooterComponent,
-  HlmSheetHeaderComponent,
-  HlmSheetTitleDirective,
-} from '@spartan-ng/ui-sheet-helm';
-import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
-import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
-import { HlmSelectLabelDirective } from '@spartan-ng/ui-select-helm';
 import { TaskCardComponent } from '../task-card/task-card.component';
 
 @Component({
