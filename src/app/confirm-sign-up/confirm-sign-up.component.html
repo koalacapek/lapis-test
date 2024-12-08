@@ -1,9 +1,13 @@
 <div class="min-w-screen min-h-screen flex items-center justify-center">
   <div class="max-w-lg w-full shadow-xl rounded-xl p-5 text-center bg-white">
-    <h1 class="text-2xl font-semibold text-center mb-4">Confirm Sign Up</h1>
-    <div class="w-full flex items-center justify-center">
-      <input hlmInput class="w-1/4 text-3xl border-black" maxlength="5" />
+    <h1 class="text-2xl font-semibold text-center mb-2">Confirm Sign Up</h1>
+    <p class="mb-4">Check your email to find the code!</p>
+    <div class="w-full flex items-center justify-center my-3">
+      <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        [config]="{ length: 6 }"
+      ></ng-otp-input>
     </div>
-    <button hlmBtn class="mt-4">Submit</button>
+    <button hlmBtn class="mt-4" (click)="handleConfirmSignUp()">Submit</button>
   </div>
 </div>

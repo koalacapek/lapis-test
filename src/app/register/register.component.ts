@@ -85,7 +85,8 @@ export class RegisterComponent {
       try {
         // Await the result of the Cognito registration
         const result = await this.Cognito.register(username, email, password);
-        console.log('Registration successful:', result);
+
+        sessionStorage.setItem('email', email);
         this.router.navigate(['/confirmSignUp']);
       } catch (error) {
         console.error('Registration error:', error);
