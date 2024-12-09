@@ -1,4 +1,12 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  signal,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import {
   HlmSheetDescriptionDirective,
   HlmSheetFooterComponent,
@@ -7,7 +15,10 @@ import {
 import { HlmSheetTitleDirective } from '@spartan-ng/ui-sheet-helm';
 import { HlmSheetContentComponent } from '@spartan-ng/ui-sheet-helm';
 import { HlmSheetComponent } from '@spartan-ng/ui-sheet-helm';
-import { BrnSheetTriggerDirective } from '@spartan-ng/ui-sheet-brain';
+import {
+  BrnSheetComponent,
+  BrnSheetTriggerDirective,
+} from '@spartan-ng/ui-sheet-brain';
 import { BrnSheetContentDirective } from '@spartan-ng/ui-sheet-brain';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
@@ -15,7 +26,7 @@ import { HlmTooltipTriggerDirective } from '@spartan-ng/ui-tooltip-helm';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
 import { Task } from '../drag-n-drop/type';
@@ -46,7 +57,7 @@ import { Task } from '../drag-n-drop/type';
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css'],
 })
-export class TaskCardComponent {
+export class TaskCardComponent implements OnChanges {
   @Input() task: Task = {
     status: '',
     taskId: '',
@@ -55,10 +66,27 @@ export class TaskCardComponent {
     deadline: new Date(),
     description: '',
   };
-  taskName: string = '';
-  taskDescription: string = '';
+  private _formBuilder = inject(FormBuilder);
+
+  form = this._formBuilder.group({
+    title: ['', [Validators.required]],
+    description: [''],
+    status: ['', [Validators.required]],
+    deadline: [new Date()],
+  });
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['task'] && changes['task'].currentValue) {
+      this.form.patchValue({
+        title: this.task.title,
+        description: this.task.description,
+        status: this.task.status,
+        deadline: this.task.deadline,
+      });
+    }
+  }
 
   saveTask(): void {
-    console.log(`Task Updated: ${this.taskName}, ${this.taskDescription}`);
+    window.location.reload();
   }
 }

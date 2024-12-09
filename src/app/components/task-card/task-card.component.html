@@ -15,50 +15,57 @@
   </div>
   <div class="h-2"></div>
 
-  <hlm-sheet-content *brnSheetContent="let ctx">
-    <hlm-sheet-header>
-      <h3 hlmSheetTitle>Edit Task</h3>
-      <p hlmSheetDescription>
-        Make changes to your task here. Click save when you're done.
-      </p>
-    </hlm-sheet-header>
+  <form [formGroup]="form" (ngSubmit)="saveTask()">
+    <hlm-sheet-content *brnSheetContent="let ctx">
+      <hlm-sheet-header>
+        <h3 hlmSheetTitle>Edit Task</h3>
+        <p hlmSheetDescription>
+          Make changes to your task here. Click save when you're done.
+        </p>
+      </hlm-sheet-header>
 
-    <div class="py-4 grid gap-4">
-      <div class="items-center grid grid-cols-4 gap-4">
-        <label hlmLabel for="name" class="text-right"
-          >Title <span class="text-red-500">*</span>
-        </label>
-        <input hlmInput id="name" [value]="task.title" class="col-span-3" />
+      <div class="py-4 grid gap-4">
+        <hlm-form-field class="items-center grid grid-cols-4 gap-4">
+          <label hlmLabel for="title" class="text-right"
+            >Title <span class="text-red-500">*</span>
+          </label>
+          <input
+            formControlName="title"
+            hlmInput
+            id="title"
+            class="col-span-3"
+          />
+        </hlm-form-field>
+        <hlm-form-field class="items-center grid grid-cols-4 gap-4">
+          <label hlmLabel for="username" class="text-right">Description</label>
+          <input
+            hlmInput
+            id="description"
+            class="col-span-3"
+            formControlName="description"
+          />
+        </hlm-form-field>
+        <hlm-form-field class="items-center grid grid-cols-4 gap-4">
+          <label hlmLabel for="status" class="text-right"
+            >Status
+            <span class="text-red-500">*</span>
+          </label>
+          <brn-select class="inline-block" formControlName="status">
+            <hlm-select-trigger class="w-56">
+              <hlm-select-value></hlm-select-value>
+            </hlm-select-trigger>
+            <hlm-select-content>
+              <hlm-option value="todo">To Do</hlm-option>
+              <hlm-option value="in_progress">In Progress</hlm-option>
+              <hlm-option value="completed">Completed</hlm-option>
+            </hlm-select-content>
+          </brn-select>
+        </hlm-form-field>
       </div>
-      <div class="items-center grid grid-cols-4 gap-4">
-        <label hlmLabel for="username" class="text-right">Description</label>
-        <input
-          hlmInput
-          id="description"
-          [value]="task.description"
-          class="col-span-3"
-        />
-      </div>
-      <hlm-form-field class="items-center grid grid-cols-4 gap-4">
-        <label hlmLabel for="status" class="text-right"
-          >Status
-          <span class="text-red-500">*</span>
-        </label>
-        <brn-select class="inline-block" formControlName="status">
-          <hlm-select-trigger class="w-56">
-            <hlm-select-value></hlm-select-value>
-          </hlm-select-trigger>
-          <hlm-select-content>
-            <hlm-option value="todo">To Do</hlm-option>
-            <hlm-option value="inProgress">In Progress</hlm-option>
-            <hlm-option value="completed">Completed</hlm-option>
-          </hlm-select-content>
-        </brn-select>
-      </hlm-form-field>
-    </div>
 
-    <hlm-sheet-footer>
-      <button hlmBtn type="submit" (click)="saveTask()">Save Changes</button>
-    </hlm-sheet-footer>
-  </hlm-sheet-content>
+      <hlm-sheet-footer>
+        <button hlmBtn type="submit">Save Changes</button>
+      </hlm-sheet-footer>
+    </hlm-sheet-content>
+  </form>
 </hlm-sheet>

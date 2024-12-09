@@ -14,6 +14,7 @@ import {
   HlmTooltipTriggerDirective,
 } from '@spartan-ng/ui-tooltip-helm';
 import {
+  BrnDialogCloseDirective,
   BrnDialogContentDirective,
   BrnDialogTriggerDirective,
 } from '@spartan-ng/ui-dialog-brain';
@@ -125,12 +126,14 @@ export class SidebarComponent {
       deadline: date || '',
       status: this.form.value.status || '',
     };
-    // TODO ADD TO DB
     // Checking was done before submitting so now all fields should be valid
 
     this.apiService.createTask(data).subscribe({
       error: (e) => console.error('Error creating task:', e),
-      complete: () => console.log('Task created successfully:'),
+      complete: () => {
+        console.log('Task created successfully:');
+        window.location.reload();
+      },
     });
   }
 
