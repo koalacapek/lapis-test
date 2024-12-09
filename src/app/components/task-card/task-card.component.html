@@ -1,18 +1,18 @@
 <hlm-sheet side="right">
   <div class="h-2"></div>
-  <button
+  <div
     class="w-full flex items-center justify-between px-6 py-4 border border-gray-300 bg-gray-50 rounded-lg shadow-md cursor-move text-lg"
     cdkDrag
-    brnSheetTrigger
   >
     <p>{{ task }}</p>
-    <div
+    <button
       class="hover:cursor-pointer hover:bg-opacity-20 bg-opacity-0 p-2 bg-gray-800 rounded-xl flex items-center justify-center transition-all"
       hlmTooltipTrigger="Edit Task"
+      brnSheetTrigger
     >
       <hlm-icon name="lucidePen" size="base"></hlm-icon>
-    </div>
-  </button>
+    </button>
+  </div>
   <div class="h-2"></div>
 
   <hlm-sheet-content *brnSheetContent="let ctx">

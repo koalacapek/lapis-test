@@ -7,8 +7,8 @@ import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 
 import { RouterLink, Router } from '@angular/router';
-import { AlertDestructiveComponent } from '../shared/alert.component';
-import { CognitoService } from '../cognito.service';
+import { AlertDestructiveComponent } from '../../shared/alert.component';
+import { CognitoService } from '../../services/cognito.service';
 @Component({
   selector: 'app-register',
   standalone: true,

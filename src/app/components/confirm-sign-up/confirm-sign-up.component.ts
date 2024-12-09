@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { NgOtpInputComponent } from 'ng-otp-input';
-import { CognitoService } from '../cognito.service';
+import { CognitoService } from '../../services/cognito.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -6,7 +6,7 @@ import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
 import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 
 import { Router, RouterLink } from '@angular/router';
-import { CognitoService } from '../cognito.service';
+import { CognitoService } from '../../services/cognito.service';
 
 @Component({
   selector: 'app-login',

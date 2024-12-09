@@ -1,10 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FetchUserAttributesOutput } from 'aws-amplify/auth';
-import { CognitoService } from '../cognito.service';
+import { CognitoService } from '../../services/cognito.service';
 import { Router } from '@angular/router';
-import { SidebarComponent } from '../components/sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HlmSpinnerComponent } from '@spartan-ng/ui-spinner-helm';
-import { DragNDropComponent } from '../components/drag-n-drop/drag-n-drop.component';
+import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
 
 @Component({
   selector: 'app-dashboard',

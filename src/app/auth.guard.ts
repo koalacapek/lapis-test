@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { CognitoService } from './cognito.service';
+import { CognitoService } from './services/cognito.service';
 
 export const authGuard: CanActivateFn = async (route, state) => {
   const router = inject(Router);

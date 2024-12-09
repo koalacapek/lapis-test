@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ConfirmSignUpComponent } from './confirm-sign-up/confirm-sign-up.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ConfirmSignUpComponent } from './components/confirm-sign-up/confirm-sign-up.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
