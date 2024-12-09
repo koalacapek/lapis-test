@@ -28,7 +28,9 @@ export class DashboardComponent implements OnInit {
 
   async fetchTasks(): Promise<void> {
     try {
-      const tasks: Task[] = await this.apiService.getUserTasks('1').toPromise();
+      const tasks: Task[] = await this.apiService
+        .getUserTasks(this.userData()?.userId || '')
+        .toPromise();
       this.tasks.set(tasks);
     } catch (error) {
       console.error('Error fetching tasks:', error);

@@ -36,7 +36,7 @@ export class ApiService {
     status: string;
   }): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put(`${this.apiUrl}/items`, task, { headers });
+    return this.http.post(`${this.apiUrl}/items`, task, { headers });
   }
 
   // Update a task

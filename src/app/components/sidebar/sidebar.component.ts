@@ -1,4 +1,4 @@
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import {
   lucideHouse,
   lucideBookCheck,
@@ -35,6 +35,7 @@ import {
 } from '@spartan-ng/ui-formfield-helm';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-sidebar',
@@ -117,20 +118,20 @@ export class SidebarComponent {
   async onSubmit() {
     const date = 'todo tanggal';
     const data = {
-      taskId: await this.getTaskId(),
+      taskId: uuidv4(),
       userId: this.userId,
       title: this.form.value.title || '',
       description: this.form.value.description || '',
       deadline: date || '',
       status: this.form.value.status || '',
     };
-
-    this.form.value;
-
     // TODO ADD TO DB
     // Checking was done before submitting so now all fields should be valid
 
-    this.apiService.createTask(data);
+    this.apiService.createTask(data).subscribe({
+      error: (e) => console.error('Error creating task:', e),
+      complete: () => console.log('Task created successfully:'),
+    });
   }
 
   async handleLogout() {
