@@ -3,9 +3,7 @@ import {
   inject,
   Input,
   OnChanges,
-  signal,
   SimpleChanges,
-  ViewChild,
 } from '@angular/core';
 import {
   HlmSheetDescriptionDirective,
@@ -30,6 +28,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
 import { Task } from '../drag-n-drop/type';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task-card',
@@ -87,6 +86,7 @@ export class TaskCardComponent implements OnChanges {
   }
 
   saveTask(): void {
-    window.location.reload();
+    console.log('Form Value:', this.form.value);
+    console.log('Form Valid:', this.form.valid);
   }
 }

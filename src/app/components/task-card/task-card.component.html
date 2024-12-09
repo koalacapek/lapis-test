@@ -15,8 +15,8 @@
   </div>
   <div class="h-2"></div>
 
-  <form [formGroup]="form" (ngSubmit)="saveTask()">
-    <hlm-sheet-content *brnSheetContent="let ctx">
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <form [formGroup]="form" (ngSubmit)="saveTask()">
       <hlm-sheet-header>
         <h3 hlmSheetTitle>Edit Task</h3>
         <p hlmSheetDescription>
@@ -64,8 +64,10 @@
       </div>
 
       <hlm-sheet-footer>
-        <button hlmBtn type="submit">Save Changes</button>
+        <button [disabled]="form.invalid" hlmBtn type="submit">
+          Save Changes
+        </button>
       </hlm-sheet-footer>
-    </hlm-sheet-content>
-  </form>
+    </form>
+  </hlm-sheet-content>
 </hlm-sheet>
