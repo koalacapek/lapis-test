@@ -14,11 +14,17 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/lapis-test",
+            "allowedCommonJsDependencies": [
+              "@spartan-ng/ui-formfield-helm",
+              "@spartan-ng/ui-input-helm",
+              "@spartan-ng/ui-tooltip-helm",
+              "@spartan-ng/ui-sheet-helm",
+              "@spartan-ng/ui-select-helm",
+              "@spartan-ng/ui-alert-helm"
+            ],
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -26,9 +32,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -73,10 +77,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -84,9 +85,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }
