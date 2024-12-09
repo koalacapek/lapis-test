@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { FetchUserAttributesOutput } from 'aws-amplify/auth';
+import { AuthUser, FetchUserAttributesOutput } from 'aws-amplify/auth';
 import { CognitoService } from '../../services/cognito.service';
 import { Router } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -14,6 +14,7 @@ import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
 })
 export class DashboardComponent implements OnInit {
   user = signal<FetchUserAttributesOutput | null>(null);
+  userData = signal<AuthUser | null>(null);
   loading = signal(true);
 
   constructor(private Cognito: CognitoService, private router: Router) {}
@@ -21,7 +22,11 @@ export class DashboardComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     try {
       const user = await this.Cognito.initializeUser();
-      this.user.set(user); // Set the user data
+      this.user.set(user);
+
+      const userData = await this.Cognito.getCurrentUserData();
+      this.userData.set(userData);
+      console.log(this.userData());
     } catch (error) {
       console.error('Error fetching user data:', error);
       this.router.navigate(['/login']); // Redirect if unable to fetch user

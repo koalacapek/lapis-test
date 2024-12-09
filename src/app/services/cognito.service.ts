@@ -62,6 +62,15 @@ export class CognitoService {
     }
   }
 
+  async getCurrentUserData() {
+    try {
+      const user = await getCurrentUser();
+      return user;
+    } catch (error) {
+      return null;
+    }
+  }
+
   async initializeUser() {
     try {
       const user = await fetchUserAttributes();

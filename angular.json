@@ -14,14 +14,6 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/lapis-test",
-            "allowedCommonJsDependencies": [
-              "@spartan-ng/ui-formfield-helm",
-              "@spartan-ng/ui-input-helm",
-              "@spartan-ng/ui-tooltip-helm",
-              "@spartan-ng/ui-sheet-helm",
-              "@spartan-ng/ui-select-helm",
-              "@spartan-ng/ui-alert-helm"
-            ],
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
