@@ -18,6 +18,7 @@ import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
+import { Task } from '../drag-n-drop/type';
 
 @Component({
   selector: 'app-task-card',
@@ -46,7 +47,14 @@ import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
   styleUrls: ['./task-card.component.css'],
 })
 export class TaskCardComponent {
-  @Input() task: string = '';
+  @Input() task: Task = {
+    status: '',
+    taskId: '',
+    title: '',
+    userId: '',
+    deadline: new Date(),
+    description: '',
+  };
   taskName: string = '';
   taskDescription: string = '';
 

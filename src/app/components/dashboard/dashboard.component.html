@@ -1,13 +1,13 @@
 @if (!loading()) {
 <div class="w-screen min-h-screen">
   <div class="w-full min-h-screen flex">
-    <app-sidebar />
+    <app-sidebar [userId]="userData()?.userId || ''" />
 
     <!-- Rest of content -->
     <div class="w-full h-full p-20">
       <h1 class="text-5xl pb-5 font-semibold">Dashboard</h1>
       <h1 class="text-3xl pb-20">Welcome, {{ user()?.preferred_username }}!</h1>
-      <app-drag-n-drop />
+      <app-drag-n-drop [tasks]="tasks()" />
     </div>
   </div>
 </div>

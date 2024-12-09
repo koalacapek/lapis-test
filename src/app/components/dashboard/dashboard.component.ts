@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HlmSpinnerComponent } from '@spartan-ng/ui-spinner-helm';
 import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
+import { ApiService } from '../../services/api.service';
+import { Task } from '../drag-n-drop/type';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,9 +17,23 @@ import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
 export class DashboardComponent implements OnInit {
   user = signal<FetchUserAttributesOutput | null>(null);
   userData = signal<AuthUser | null>(null);
+  tasks = signal<Task[]>([]);
   loading = signal(true);
 
-  constructor(private Cognito: CognitoService, private router: Router) {}
+  constructor(
+    private Cognito: CognitoService,
+    private router: Router,
+    private apiService: ApiService
+  ) {}
+
+  async fetchTasks(): Promise<void> {
+    try {
+      const tasks: Task[] = await this.apiService.getUserTasks('1').toPromise();
+      this.tasks.set(tasks);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  }
 
   async ngOnInit(): Promise<void> {
     try {
@@ -26,7 +42,8 @@ export class DashboardComponent implements OnInit {
 
       const userData = await this.Cognito.getCurrentUserData();
       this.userData.set(userData);
-      console.log(this.userData());
+
+      await this.fetchTasks();
     } catch (error) {
       console.error('Error fetching user data:', error);
       this.router.navigate(['/login']); // Redirect if unable to fetch user

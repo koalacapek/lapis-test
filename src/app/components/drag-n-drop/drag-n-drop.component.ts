@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -10,6 +10,8 @@ import {
 import { provideIcons } from '@ng-icons/core';
 import { lucidePen } from '@ng-icons/lucide';
 import { TaskCardComponent } from '../task-card/task-card.component';
+import { ApiService } from '../../services/api.service';
+import { Task } from './type';
 
 @Component({
   selector: 'app-drag-n-drop',
@@ -19,14 +21,23 @@ import { TaskCardComponent } from '../task-card/task-card.component';
   imports: [CdkDropList, CdkDrag, CdkDropListGroup, TaskCardComponent],
   providers: provideIcons({ lucidePen }),
 })
-export class DragNDropComponent {
-  todo = ['Task 1', 'Task 2', 'Task 3'];
-  inProgress = ['Task 4'];
-  completed = ['Task 5', 'Task 6'];
+export class DragNDropComponent implements OnInit {
+  @Input() tasks!: Task[];
+  todo: Task[] = [];
+  inProgress: Task[] = [];
+  completed: Task[] = [];
 
-  drop(event: CdkDragDrop<string[]>, status: string) {
-    console.log(status);
-    console.log(event.previousContainer, event.container);
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit(): void {
+    this.todo = this.tasks.filter((task) => task.status === 'todo');
+    this.inProgress = this.tasks.filter(
+      (task) => task.status === 'in_progress'
+    );
+    this.completed = this.tasks.filter((task) => task.status === 'completed');
+  }
+
+  drop(event: CdkDragDrop<Task[]>, status: string) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,

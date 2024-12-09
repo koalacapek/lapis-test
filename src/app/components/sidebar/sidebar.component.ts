@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import {
   lucideHouse,
   lucideBookCheck,
@@ -34,6 +34,7 @@ import {
   HlmFormFieldModule,
 } from '@spartan-ng/ui-formfield-helm';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -68,19 +69,21 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class SidebarComponent {
+  @Input() userId!: string;
   private _formBuilder = inject(FormBuilder);
+
+  constructor(
+    private Cognito: CognitoService,
+    private router: Router,
+    private apiService: ApiService
+  ) {}
 
   form = this._formBuilder.group({
     title: ['', [Validators.required]],
     description: [''],
     status: ['', [Validators.required]],
-    deadline: [''],
+    deadline: [new Date()],
   });
-
-  async onSubmit() {
-    console.log(this.form);
-    // TODO ADD TO DB
-  }
 
   options = [
     {
@@ -102,14 +105,36 @@ export class SidebarComponent {
     tooltip: 'Log Out',
   };
 
-  constructor(private Cognito: CognitoService, private router: Router) {}
+  async getTaskId() {
+    const tasks = await this.apiService.getTasks();
+
+    if (tasks) {
+      return tasks.length.toString();
+    }
+    return '0';
+  }
+
+  async onSubmit() {
+    const date = 'todo tanggal';
+    const data = {
+      taskId: await this.getTaskId(),
+      userId: this.userId,
+      title: this.form.value.title || '',
+      description: this.form.value.description || '',
+      deadline: date || '',
+      status: this.form.value.status || '',
+    };
+
+    this.form.value;
+
+    // TODO ADD TO DB
+    // Checking was done before submitting so now all fields should be valid
+
+    this.apiService.createTask(data);
+  }
 
   async handleLogout() {
     await this.Cognito.logout();
     this.router.navigate(['/login']);
-  }
-
-  handleValue(val: any) {
-    console.log('val', val);
   }
 }
