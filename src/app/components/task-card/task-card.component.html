@@ -7,8 +7,12 @@
     <div>
       <p class="text-sm md:text-base font-semibold">{{ task.title }}</p>
       @if (days()) {
-      <p class="text-sm md:text-base">
+      <p class="text-sm md:text-base text-gray-600">
         Task is due <span class="text-red-500">{{ days() }}</span>
+      </p>
+      } @else {
+      <p class="text-sm md:text-base text-gray-600">
+        Deadline was not specified
       </p>
       }
     </div>
