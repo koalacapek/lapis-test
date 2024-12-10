@@ -86,7 +86,7 @@ export class TaskCardComponent implements OnChanges {
     taskId: '',
     title: '',
     userId: '',
-    deadline: new Date(),
+    deadline: '',
     description: '',
   };
   private _formBuilder = inject(FormBuilder);
@@ -97,7 +97,7 @@ export class TaskCardComponent implements OnChanges {
     title: ['', [Validators.required]],
     description: [''],
     status: ['', [Validators.required]],
-    deadline: [new Date()],
+    deadline: [''],
   });
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -119,7 +119,19 @@ export class TaskCardComponent implements OnChanges {
     });
   };
 
-  saveTask = (): void => {
-    window.location.reload();
+  handleUpdateTask = (): void => {
+    const newDetail = {
+      taskId: this.task.taskId,
+      userId: this.task.userId,
+      status: this.form.value.status || this.task.status,
+      title: this.form.value.title || this.task.title,
+      description: this.form.value.description || '',
+      deadline: this.form.value.deadline || '',
+    };
+
+    this.apiService.updateTask(newDetail).subscribe({
+      error: (e) => console.error(e),
+      complete: () => window.location.reload(),
+    });
   };
 }

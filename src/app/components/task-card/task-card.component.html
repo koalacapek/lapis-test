@@ -43,7 +43,7 @@
   <div class="h-2"></div>
 
   <hlm-sheet-content *brnSheetContent="let ctx">
-    <form [formGroup]="form" (ngSubmit)="saveTask()">
+    <form [formGroup]="form" (ngSubmit)="handleUpdateTask()">
       <hlm-sheet-header>
         <h3 hlmSheetTitle>Edit Task</h3>
         <p hlmSheetDescription>

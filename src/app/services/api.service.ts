@@ -43,13 +43,13 @@ export class ApiService {
   updateTask(updates: {
     userId: string;
     taskId: string;
-    title?: string;
-    description?: string;
-    deadline?: string;
-    status?: string;
+    title: string;
+    description: string;
+    deadline: string;
+    status: string;
   }): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.patch(`${this.apiUrl}/items/${updates.taskId}`, updates, {
+    return this.http.put(`${this.apiUrl}/items`, updates, {
       headers,
     });
   }
