@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -41,7 +41,7 @@ import { CognitoService } from '../../services/cognito.service';
     ]),
   ],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   private _formBuilder = inject(FormBuilder);
 
   showAlert = signal(false);
@@ -51,6 +51,11 @@ export class RegisterComponent {
     effect(() => {
       this.showAlert.set(this.form.invalid && this.form.dirty);
     });
+  }
+
+  async ngOnInit(): Promise<void> {
+    const user = await this.Cognito.isAuthenticated();
+    if (user) this.router.navigate(['/dashboard']);
   }
 
   form = this._formBuilder.group({
@@ -87,6 +92,7 @@ export class RegisterComponent {
         await this.Cognito.register(username, email, password);
 
         sessionStorage.setItem('email', email);
+        sessionStorage.setItem('password', password);
         this.router.navigate(['/confirmSignUp']);
       } catch (error) {
         console.error('Registration error:', error);

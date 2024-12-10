@@ -3,7 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ConfirmSignUpComponent } from './components/confirm-sign-up/confirm-sign-up.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { authGuard } from './auth.guard';
+import { authGuard, confirmGuard } from './auth.guard';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -12,7 +12,7 @@ export const routes: Routes = [
   {
     path: 'confirmSignUp',
     component: ConfirmSignUpComponent,
-    canActivate: [authGuard],
+    canActivate: [confirmGuard],
   },
   {
     path: 'dashboard',

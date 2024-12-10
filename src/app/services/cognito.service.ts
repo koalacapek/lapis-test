@@ -76,12 +76,15 @@ export class CognitoService {
       const user = await fetchUserAttributes();
       return user;
     } catch (error) {
-      console.error('Error fetching user:', error);
       return null;
     }
   }
 
-  async confirmOtp(email: string, code: string): Promise<void> {
+  async confirmOtp(
+    email: string,
+    password: string,
+    code: string
+  ): Promise<void> {
     try {
       // Confirm the sign-up process
       const { nextStep } = await confirmSignUp({
@@ -91,10 +94,10 @@ export class CognitoService {
 
       // Check the next step after confirmation
       if (nextStep.signUpStep === 'COMPLETE_AUTO_SIGN_IN') {
+        const { nextStep } = await autoSignIn();
         console.log('Sign-up complete, attempting auto sign-in.');
 
         // Automatically sign in the user
-        const { nextStep } = await autoSignIn();
 
         if (nextStep.signInStep === 'DONE') {
           console.log('Successfully signed in.');
@@ -104,6 +107,9 @@ export class CognitoService {
       } else {
         console.log('Sign-up confirmed. No auto sign-in required.');
       }
+
+      // Now logged user in
+      await this.login(email, password);
     } catch (error) {
       console.error('Error confirming sign-up or signing in:', error);
       throw error; // Re-throw the error for higher-level handling

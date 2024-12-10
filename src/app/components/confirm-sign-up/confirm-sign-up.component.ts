@@ -14,9 +14,11 @@ import { Router } from '@angular/router';
 export class ConfirmSignUpComponent {
   code = signal('');
   email = signal<string>('');
+  password = signal<string>('');
 
   constructor(private Cognito: CognitoService, private router: Router) {
     this.email.set(sessionStorage.getItem('email') || '');
+    this.password.set(sessionStorage.getItem('password') || '');
   }
 
   onOtpChange(event: any) {
@@ -25,8 +27,9 @@ export class ConfirmSignUpComponent {
 
   async handleConfirmSignUp() {
     try {
-      await this.Cognito.confirmOtp(this.email(), this.code());
+      await this.Cognito.confirmOtp(this.email(), this.password(), this.code());
       sessionStorage.removeItem('email');
+      sessionStorage.removeItem('password');
       this.router.navigate(['dashboard']);
     } catch (e: any) {
       console.error(e);
