@@ -8,7 +8,7 @@ import {
   CdkDropListGroup,
 } from '@angular/cdk/drag-drop';
 import { provideIcons } from '@ng-icons/core';
-import { lucidePen } from '@ng-icons/lucide';
+import { lucidePen, lucideTrash } from '@ng-icons/lucide';
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { ApiService } from '../../services/api.service';
 import { Task } from './type';
@@ -19,7 +19,7 @@ import { Task } from './type';
   templateUrl: 'drag-n-drop.component.html',
   styleUrl: 'drag-n-drop.component.css',
   imports: [CdkDropList, CdkDrag, CdkDropListGroup, TaskCardComponent],
-  providers: provideIcons({ lucidePen }),
+  providers: provideIcons({ lucidePen, lucideTrash }),
 })
 export class DragNDropComponent implements OnInit {
   @Input() tasks!: Task[];

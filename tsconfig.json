@@ -60,6 +60,9 @@
       ],
       "@spartan-ng/ui-breadcrumb-helm": [
         ".\\libs/ui/ui-breadcrumb-helm/src/index.ts"
+      ],
+      "@spartan-ng/ui-alertdialog-helm": [
+        ".\\libs/ui/ui-alertdialog-helm/src/index.ts"
       ]
     }
   },

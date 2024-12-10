@@ -13,10 +13,7 @@ import {
 import { HlmSheetTitleDirective } from '@spartan-ng/ui-sheet-helm';
 import { HlmSheetContentComponent } from '@spartan-ng/ui-sheet-helm';
 import { HlmSheetComponent } from '@spartan-ng/ui-sheet-helm';
-import {
-  BrnSheetComponent,
-  BrnSheetTriggerDirective,
-} from '@spartan-ng/ui-sheet-brain';
+import { BrnSheetTriggerDirective } from '@spartan-ng/ui-sheet-brain';
 import { BrnSheetContentDirective } from '@spartan-ng/ui-sheet-brain';
 import { HlmIconComponent } from '@spartan-ng/ui-icon-helm';
 import { HlmInputDirective } from '@spartan-ng/ui-input-helm';
@@ -28,7 +25,22 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
 import { Task } from '../drag-n-drop/type';
-import { CommonModule } from '@angular/common';
+
+import {
+  BrnAlertDialogContentDirective,
+  BrnAlertDialogTriggerDirective,
+} from '@spartan-ng/ui-alertdialog-brain';
+import {
+  HlmAlertDialogActionButtonDirective,
+  HlmAlertDialogCancelButtonDirective,
+  HlmAlertDialogComponent,
+  HlmAlertDialogContentComponent,
+  HlmAlertDialogDescriptionDirective,
+  HlmAlertDialogFooterComponent,
+  HlmAlertDialogHeaderComponent,
+  HlmAlertDialogTitleDirective,
+} from '@spartan-ng/ui-alertdialog-helm';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-task-card',
@@ -52,6 +64,18 @@ import { CommonModule } from '@angular/common';
 
     HlmFormFieldModule,
     ReactiveFormsModule,
+
+    BrnAlertDialogTriggerDirective,
+    BrnAlertDialogContentDirective,
+
+    HlmAlertDialogComponent,
+    HlmAlertDialogHeaderComponent,
+    HlmAlertDialogFooterComponent,
+    HlmAlertDialogTitleDirective,
+    HlmAlertDialogDescriptionDirective,
+    HlmAlertDialogCancelButtonDirective,
+    HlmAlertDialogActionButtonDirective,
+    HlmAlertDialogContentComponent,
   ],
   templateUrl: './task-card.component.html',
   styleUrls: ['./task-card.component.css'],
@@ -66,6 +90,8 @@ export class TaskCardComponent implements OnChanges {
     description: '',
   };
   private _formBuilder = inject(FormBuilder);
+
+  constructor(private apiService: ApiService) {}
 
   form = this._formBuilder.group({
     title: ['', [Validators.required]],
@@ -85,8 +111,15 @@ export class TaskCardComponent implements OnChanges {
     }
   }
 
-  saveTask(): void {
-    console.log('Form Value:', this.form.value);
-    console.log('Form Valid:', this.form.valid);
-  }
+  handleDeleteTask = () => {
+    console.log(this.task.taskId);
+    this.apiService.deleteTask(this.task.taskId).subscribe({
+      error: (e) => console.error(e),
+      complete: () => window.location.reload(),
+    });
+  };
+
+  saveTask = (): void => {
+    window.location.reload();
+  };
 }
