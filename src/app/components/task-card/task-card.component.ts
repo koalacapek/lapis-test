@@ -42,6 +42,7 @@ import {
   HlmAlertDialogTitleDirective,
 } from '@spartan-ng/ui-alertdialog-helm';
 import { ApiService } from '../../services/api.service';
+import { calculateDaysFromNow } from '../../utils/util';
 
 @Component({
   selector: 'app-task-card',
@@ -91,6 +92,7 @@ export class TaskCardComponent implements OnChanges {
     description: '',
   };
   minDate = signal('');
+  days = signal('');
 
   private _formBuilder = inject(FormBuilder);
 
@@ -117,6 +119,8 @@ export class TaskCardComponent implements OnChanges {
         deadline: this.task.deadline,
       });
     }
+
+    this.days.set(calculateDaysFromNow(this.task.deadline || ''));
   }
 
   handleDeleteTask = () => {
