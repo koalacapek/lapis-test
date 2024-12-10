@@ -39,12 +39,16 @@ export class LoginComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     if (this.form.valid) {
-      console.log('Login data:', this.form.value);
-      await this.Cognito.login(
-        this.form.value.email || '',
-        this.form.value.password || ''
-      );
-      this.router.navigate(['/dashboard']);
+      try {
+        await this.Cognito.login(
+          this.form.value.email || '',
+          this.form.value.password || ''
+        );
+      } catch (e) {
+        alert('Username or Password is wrong');
+      } finally {
+        this.router.navigate(['/dashboard']);
+      }
     } else {
       console.log('Form is invalid');
     }

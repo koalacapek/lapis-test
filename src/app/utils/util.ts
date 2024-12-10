@@ -21,9 +21,9 @@ export const calculateDaysFromNow = (dateString: string): string => {
 
   // Return appropriate string based on the difference
   if (diffInDays === 0) {
-    return 'today';
+    return 'today!';
   } else if (diffInDays === 1) {
-    return 'tomorrow';
+    return 'tomorrow!';
   } else if (diffInDays < 0) {
     return `${Math.abs(Math.round(diffInDays))} days ago`;
   } else {

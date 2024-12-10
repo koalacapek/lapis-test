@@ -106,9 +106,13 @@
             <!-- Select and Error Message -->
             <div class="col-span-3">
               <!-- Select Dropdown -->
-              <brn-select class="inline-block w-full" formControlName="status">
+              <brn-select
+                class="inline-block w-full"
+                formControlName="status"
+                placeholder="Select task progress"
+              >
                 <hlm-select-trigger class="w-full">
-                  <hlm-select-value></hlm-select-value>
+                  <hlm-select-value />
                 </hlm-select-trigger>
                 <hlm-select-content>
                   <hlm-option value="todo">To Do</hlm-option>
