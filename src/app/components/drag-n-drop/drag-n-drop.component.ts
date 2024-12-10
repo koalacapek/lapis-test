@@ -45,12 +45,31 @@ export class DragNDropComponent implements OnInit {
         event.currentIndex
       );
     } else {
+      // If moved to other container, update the db as well
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
+
+      // Get task data from event.container.data[0]
+      const taskData = event.container.data[0];
+      const newDetail = {
+        taskId: taskData.taskId,
+        userId: taskData.userId,
+        // update status with new status
+        status: status,
+        title: taskData.title,
+        description: taskData.description || '',
+        deadline: taskData.deadline || '',
+      };
+
+      // if success dont reload as frontend will be up to date alr
+      this.apiService.updateTask(newDetail).subscribe({
+        error: (e) => console.error(e),
+        complete: () => console.log('Updated successfully'),
+      });
     }
   }
 }

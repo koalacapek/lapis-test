@@ -123,8 +123,10 @@ export class TaskCardComponent implements OnChanges {
     const newDetail = {
       taskId: this.task.taskId,
       userId: this.task.userId,
+      // Either new or old data
       status: this.form.value.status || this.task.status,
       title: this.form.value.title || this.task.title,
+      // These 2 are optional attribute
       description: this.form.value.description || '',
       deadline: this.form.value.deadline || '',
     };
