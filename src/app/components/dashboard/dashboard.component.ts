@@ -7,6 +7,7 @@ import { HlmSpinnerComponent } from '@spartan-ng/ui-spinner-helm';
 import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
 import { ApiService } from '../../services/api.service';
 import { Task } from '../../utils/type';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,9 +29,10 @@ export class DashboardComponent implements OnInit {
 
   async fetchTasks(): Promise<void> {
     try {
-      const tasks: Task[] = await this.apiService
-        .getUserTasks(this.userData()?.userId || '')
-        .toPromise();
+      const tasks: Task[] = await firstValueFrom(
+        this.apiService.getUserTasks(this.userData()?.userId || '')
+      );
+
       this.tasks.set(tasks);
     } catch (error) {
       console.error('Error fetching tasks:', error);

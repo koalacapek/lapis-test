@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { Task } from '../utils/type';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ApiService {
 
   // Get all tasks for a user
   async getTasks(): Promise<Task[] | undefined> {
-    return await this.http.get<Task[]>(`${this.apiUrl}/items`).toPromise();
+    return await firstValueFrom(this.http.get<Task[]>(`${this.apiUrl}/items`));
   }
 
   getUserTasks(userId: string): Observable<any> {
