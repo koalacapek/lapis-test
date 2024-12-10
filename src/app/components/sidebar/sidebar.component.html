@@ -1,5 +1,5 @@
 <div
-  class="px-5 pt-20 pb-10 h-full shadow-xl w-full bg-white flex flex-col justify-between"
+  class="px-1 md:px-5 pt-20 pb-10 h-full shadow-xl w-full bg-white flex flex-col justify-between"
 >
   <div class="flex flex-col gap-y-5 items-center">
     @for (item of options; track $index) {
@@ -30,7 +30,7 @@
       </button>
 
       <hlm-dialog-content
-        class="sm:max-w-[425px] min-w-[800px]"
+        class="sm:max-w-[400px] md:min-w-[780px]"
         *brnDialogContent="let ctx"
       >
         <hlm-dialog-header>
@@ -57,7 +57,7 @@
                 formControlName="title"
                 placeholder="Task title"
                 class="w-full"
-                maxlength="50"
+                maxlength="20"
               />
 
               <!-- Error Message -->
@@ -79,7 +79,7 @@
               formControlName="description"
               class="col-span-3 min-h-20"
               placeholder="Type description here."
-              maxlength="100"
+              maxlength="200"
             ></textarea>
           </hlm-form-field>
 
