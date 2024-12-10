@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import {
   lucideHouse,
   lucideBookCheck,
@@ -69,12 +69,18 @@ import { v4 as uuidv4 } from 'uuid';
 export class SidebarComponent {
   @Input() userId!: string;
   private _formBuilder = inject(FormBuilder);
+  minDate = signal('');
 
   constructor(
     private Cognito: CognitoService,
     private router: Router,
     private apiService: ApiService
-  ) {}
+  ) {
+    const today = new Date();
+
+    // Format the date as YYYY-MM-DD for the input
+    this.minDate.set(today.toISOString().split('T')[0]);
+  }
 
   form = this._formBuilder.group({
     title: ['', [Validators.required]],

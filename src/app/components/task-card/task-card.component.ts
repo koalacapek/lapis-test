@@ -3,6 +3,7 @@ import {
   inject,
   Input,
   OnChanges,
+  signal,
   SimpleChanges,
 } from '@angular/core';
 import {
@@ -89,9 +90,16 @@ export class TaskCardComponent implements OnChanges {
     deadline: '',
     description: '',
   };
+  minDate = signal('');
+
   private _formBuilder = inject(FormBuilder);
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    const today = new Date();
+
+    // Format the date as YYYY-MM-DD for the input
+    this.minDate.set(today.toISOString().split('T')[0]);
+  }
 
   form = this._formBuilder.group({
     title: ['', [Validators.required]],
