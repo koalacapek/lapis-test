@@ -80,7 +80,7 @@ export class SidebarComponent {
     title: ['', [Validators.required]],
     description: [''],
     status: ['', [Validators.required]],
-    deadline: [new Date()],
+    deadline: [''],
   });
 
   options = [
@@ -113,13 +113,12 @@ export class SidebarComponent {
   }
 
   async onSubmit() {
-    const date = 'todo tanggal';
     const data = {
       taskId: uuidv4(),
       userId: this.userId,
       title: this.form.value.title || '',
       description: this.form.value.description || '',
-      deadline: date || '',
+      deadline: this.form.value.deadline || '',
       status: this.form.value.status || '',
     };
     // Checking was done before submitting so now all fields should be valid

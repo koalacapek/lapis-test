@@ -53,7 +53,7 @@
 
       <div class="py-4 grid gap-4">
         <hlm-form-field class="items-center grid grid-cols-4 gap-4">
-          <label hlmLabel for="title" class="md:text-md text-xs"
+          <label hlmLabel for="title" class="md:text-md text-xs md:text-right"
             >Title <span class="text-red-500">*</span>
           </label>
           <input
@@ -64,7 +64,10 @@
           />
         </hlm-form-field>
         <hlm-form-field class="items-center grid grid-cols-4 gap-4">
-          <label hlmLabel for="username" class="md:text-md text-xs"
+          <label
+            hlmLabel
+            for="username"
+            class="md:text-md text-xs md:text-right"
             >Description</label
           >
           <input
@@ -74,8 +77,22 @@
             formControlName="description"
           />
         </hlm-form-field>
+        <hlm-form-field class="grid grid-cols-4 gap-4 items-center">
+          <label
+            hlmLabel
+            for="description"
+            class="md:text-md text-xs md:text-right"
+            >Deadline</label
+          >
+          <input
+            hlmInput
+            formControlName="deadline"
+            class="col-span-3"
+            type="date"
+          />
+        </hlm-form-field>
         <hlm-form-field class="items-center grid grid-cols-4 gap-4">
-          <label hlmLabel for="status" class="md:text-md text-xs"
+          <label hlmLabel for="status" class="md:text-md text-xs md:text-right"
             >Status
             <span class="text-red-500">*</span>
           </label>
