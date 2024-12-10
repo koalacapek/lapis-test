@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Task } from '../components/drag-n-drop/type';
+import { Task } from '../utils/type';
 
 @Injectable({
   providedIn: 'root',

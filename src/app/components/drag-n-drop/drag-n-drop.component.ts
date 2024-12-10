@@ -11,7 +11,7 @@ import { provideIcons } from '@ng-icons/core';
 import { lucidePen, lucideTrash } from '@ng-icons/lucide';
 import { TaskCardComponent } from '../task-card/task-card.component';
 import { ApiService } from '../../services/api.service';
-import { Task } from './type';
+import { Task } from '../../utils/type';
 
 @Component({
   selector: 'app-drag-n-drop',

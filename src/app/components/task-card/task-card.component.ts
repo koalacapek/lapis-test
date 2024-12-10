@@ -24,7 +24,7 @@ import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
-import { Task } from '../drag-n-drop/type';
+import { Task } from '../../utils/type';
 
 import {
   BrnAlertDialogContentDirective,

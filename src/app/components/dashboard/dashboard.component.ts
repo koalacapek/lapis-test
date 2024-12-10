@@ -6,7 +6,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HlmSpinnerComponent } from '@spartan-ng/ui-spinner-helm';
 import { DragNDropComponent } from '../drag-n-drop/drag-n-drop.component';
 import { ApiService } from '../../services/api.service';
-import { Task } from '../drag-n-drop/type';
+import { Task } from '../../utils/type';
 
 @Component({
   selector: 'app-dashboard',
