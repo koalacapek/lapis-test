@@ -26,10 +26,7 @@ import { HlmButtonDirective } from '@spartan-ng/ui-button-helm';
 import { HlmSelectImports } from '@spartan-ng/ui-select-helm';
 import { BrnSelectImports } from '@spartan-ng/ui-select-brain';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-  HlmFormFieldComponent,
-  HlmFormFieldModule,
-} from '@spartan-ng/ui-formfield-helm';
+import { HlmFormFieldModule } from '@spartan-ng/ui-formfield-helm';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
 import { v4 as uuidv4 } from 'uuid';
